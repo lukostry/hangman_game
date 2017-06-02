@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-// import Form from '../containers/Form';
+import Game from '../containers/game';
 
 function Root({ store }) {
     return (
         <Provider store={store}>
-            {/* <Form /> */}
+            <Game />
         </Provider>
     );
 }
