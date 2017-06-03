@@ -1,13 +1,9 @@
 import React from 'react';
-import fill from 'lodash/fill';
+import { createEmptyPlaceholdersArray } from '../../utils';
 import './guessed-chars.css';
 
-const MAX_LENGTH_OF_WORD = 10;
-
 function GuessedChars ({ currentWord }) {
-    const numberOfPlaceholders = MAX_LENGTH_OF_WORD - currentWord.length;
-    const placeholders = fill(Array(numberOfPlaceholders), null);
-    console.log(placeholders);
+    const placeholders = createEmptyPlaceholdersArray(currentWord);
 
     return (
         <section className="guessed-chars-container">
