@@ -1,14 +1,14 @@
 import React from 'react';
-import theme from './theme.css';
+import './missed-chars.css';
 
-function MissedWords ({ missedWords }) {
+function MissedChars ({ missedChars }) {
     return (
-        <section className="missed-word-container">
+        <section className="missed-chars-container">
             <h1>You missed:</h1>
             <div>
-                {missedWords.map((word, index) =>
+                {missedChars.map((word, index) =>
                     <span
-                        className="missed-word"
+                        className="missed-char"
                         key={index}
                     >
                         {word}
@@ -19,4 +19,4 @@ function MissedWords ({ missedWords }) {
     );
 }
 
-export default MissedWords;
+export default MissedChars;

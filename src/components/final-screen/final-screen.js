@@ -1,12 +1,13 @@
 import React from 'react';
+import './final-screen.css';
 
-function GameOver () {
+function FinalScreen () {
     return (
-        <div className="game-over-overlay">
+        <div className="final-screen-overlay">
             <div><span>Game over</span></div>
             <button>New word</button>
         </div>
     );
 }
 
-export default GameOver;
+export default FinalScreen;

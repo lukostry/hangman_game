@@ -1,15 +1,16 @@
 import React from 'react';
 import fill from 'lodash/fill';
+import './guessed-chars.css';
 
 const MAX_LENGTH_OF_WORD = 10;
 
-function GuessedWords ({ currentWord }) {
+function GuessedChars ({ currentWord }) {
     const numberOfPlaceholders = MAX_LENGTH_OF_WORD - currentWord.length;
     const placeholders = fill(Array(numberOfPlaceholders), null);
     console.log(placeholders);
 
     return (
-        <section className="guessed-word-container">
+        <section className="guessed-chars-container">
             {placeholders.map((item, index) => {
                 return <div className="empty-placeholder" key={index}></div>
             })}
@@ -20,4 +21,4 @@ function GuessedWords ({ currentWord }) {
     );
 }
 
-export default GuessedWords;
+export default GuessedChars;

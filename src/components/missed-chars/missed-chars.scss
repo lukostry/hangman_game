@@ -1,0 +1,21 @@
+@import "styles/shared.scss";
+
+.missed-chars-container {
+    overflow-wrap: break-word;
+    padding-left: 15%;
+    text-transform: uppercase;
+    @include sizing(60%, 50%);
+
+    h1 {
+        color: $missed-words-header-color;
+        font-size: $missed-words-header-font-size;
+        margin-bottom: 15px;
+    }
+}
+
+.missed-char {
+    color: $missed-word-color;
+    display: inline-block;
+    font-size: $missed-word-font-size;
+    margin-right: 5px;
+}

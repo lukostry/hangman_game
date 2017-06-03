@@ -1,0 +1,31 @@
+@import "styles/shared.scss";
+
+.guessed-chars-container {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    min-height: 110px;
+    @include flex-y-centered(flex-start);
+    @include sizing(100%, 40px);
+}
+
+.empty-placeholder {
+    background-color: #e6e6e7;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    @include sizing(9%, 70px);
+}
+
+.char-placeholder {
+    background-color: #53555d;
+    color: $white;
+    font-size: $missed-word-font-size;
+    display: inline-block;
+    line-height: $missed-word-font-size * 1.5;
+    border-radius: 5px;
+    margin-right: 5px;
+    text-align: center;
+    z-index: 100;
+    @include sizing(9%, 70px);
+}

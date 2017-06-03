@@ -1,4 +1,5 @@
 import React from 'react';
+import './hangman.css';
 
 function Hangman ({ levelOfTheGame }) {
     return (
