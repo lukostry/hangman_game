@@ -1,11 +1,12 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import Hangman from '../components/hangman';
-import MissedWords from '../components/missed-words';
-import GameOver from '../components/game-over';
-import GuessedWords from '../components/guessed-words';
-import game from './game.css';
+import * as selectors from '../selectors';
+import FinalScreen from '../components/final-screen/final-screen';
+import GuessedChars from '../components/guessed-chars/guessed-chars';
+import Hangman from '../components/hangman/hangman';
+import MissedChars from '../components/missed-chars/missed-chars';
+import './game.css';
 
 class Game extends Component {
 
@@ -15,14 +16,8 @@ class Game extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        if (nextProps.isGameOver) {
+        if (nextProps.isGameOver || nextProps.isGameWon) {
             document.body.removeEventListener('keydown', this.handleKeyStrokes);
-        }
-
-        if (nextProps.isGameWon) {
-            // I think we can dispatched as a part of fetchNewWord
-            this.props.reloadGame();
-            this.props.fetchNewWord();
         }
     }
 
@@ -34,23 +29,39 @@ class Game extends Component {
         console.log(keyPressed);
     }
 
+    handleNewWordRequest = () => {
+        this.props.fetchNewWord()
+            .then(() => document.body.addEventListener('keydown', this.handleKeyStrokes));
+    }
+
     render () {
-        const { currentWord, isGameOver, levelOfTheGame, missedWords } = this.props;
+        const {
+            currentWord,
+            isGameOver,
+            isGameWon,
+            levelOfTheGame,
+            missedChars,
+            wasMissed,
+        } = this.props;
 
         return (
             <div className="game-container">
-                {isGameOver && <GameOver />}
+                {(isGameOver || isGameWon) &&
+                    <FinalScreen
+                        isGameOver={isGameOver}
+                        onNewWordRequest={this.handleNewWordRequest}
+                    />
+                }
                 <div
                     className="inner-container"
-                    style={{opacity: isGameOver ? '0.2' : '1'}}
+                    style={{opacity: (isGameOver || isGameWon) ? '0.2' : '1'}}
                 >
                     <Hangman levelOfTheGame={levelOfTheGame} />
-                    <MissedWords
-                        missedWords={missedWords}
+                    <MissedChars
+                        missedChars={missedChars}
+                        wasMissed={wasMissed}
                     />
-                    <GuessedWords
-                        currentWord={currentWord}
-                    />
+                    <GuessedChars currentWord={currentWord} />
                 </div>
             </div>
         );
@@ -58,11 +69,12 @@ class Game extends Component {
 }
 
 const mapStateToProps = state => ({
-    isGameOver: state.levelOfTheGame === 11,
-    isGameWon: state.currentWord.every(obj => obj.wasGuessed),
     currentWord: state.currentWord,
+    isGameOver: selectors.getIsGameOver(state),
+    isGameWon: selectors.getIsGameWon(state),
     levelOfTheGame: state.levelOfTheGame,
-    missedWords: state.missedWords,
+    missedChars: state.missedChars,
+    wasMissed: selectors.getWasMissed(state),
 });
 
 export default connect(mapStateToProps, actions)(Game);

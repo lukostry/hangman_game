@@ -1,7 +1,7 @@
 const INIT_STATE = {
     currentWord: [],
     levelOfTheGame: 0,
-    missedWords: [],
+    missedChars: [],
 };
 
 function updateCurrentWord (word, char) {
@@ -30,7 +30,7 @@ function updateAfterInput (state, char) {
     return {
         ...state,
         levelOfTheGame: state.levelOfTheGame + 1,
-        missedWords: [...state.missedWords, char],
+        missedChars: [...state.missedChars, char],
     };
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import './missed-chars.css';
 
-function MissedChars ({ missedChars }) {
+function MissedChars ({ missedChars, wasMissed }) {
     return (
         <section className="missed-chars-container">
-            <h1>You missed:</h1>
+            {wasMissed && <h1>You missed:</h1>}
             <div>
                 {missedChars.map((word, index) =>
                     <span

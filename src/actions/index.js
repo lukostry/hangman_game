@@ -10,6 +10,10 @@ export const fetchNewWord = () => dispatch =>
             const wordConvertedToArr = json.word.toUpperCase().split('');
 
             dispatch({
+                type: 'GAME_RELOADED',
+            });
+
+            dispatch({
                 type: 'FETCHED_NEW_WORD',
                 payload: wordConvertedToArr.map(char => ({
                     character: char,
@@ -20,10 +24,6 @@ export const fetchNewWord = () => dispatch =>
 
             return Promise.resolve();
         });
-
-export const reloadGame = () => ({
-    type: 'GAME_RELOADED',
-});
 
 export const pressCharacter = char => ({
     type: 'CHARACTER_PRESSED',
