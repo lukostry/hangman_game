@@ -1,0 +1,215 @@
+@import "styles/shared.scss";
+
+.hangman {
+    position: relative;
+    @include sizing(40%, 50%);
+
+    .bar {
+        background-color: $hangman-gray;
+        border-radius: 0 5px 5px 0;
+        // position: relative;
+        @include sizing(60%, 30px);
+
+        &::after {
+            content: "";
+            background-color: $hangman-gray;
+            position: absolute;
+            left: 165px;
+            top: 30px;
+            @include sizing(25px, 40px);
+        }
+    }
+
+    .head {
+        background-image: url(./head.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        left: 144px;
+        top: 70px;
+        @include sizing(70px, 70px);
+    }
+
+    .neck {
+        background-color: $main-hangman-color;
+        position: absolute;
+        left: 167px;
+        top: 140px;
+        @include sizing(25px, 15px);
+    }
+
+    .corpus {
+        background-image: url(./corpus.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        left: 152px;
+        top: 155px;
+        @include sizing(55px, 85px);
+    }
+
+    .right-arm {
+        background-color: #009e67;
+        position: absolute;
+        transform: rotate(-45deg);
+        left: 200px;
+        top: 156px;
+        z-index: 2;
+        @include sizing(25px, 55px);
+    }
+
+    .left-arm {
+        background-color: #72c558;
+        position: absolute;
+        transform: rotate(45deg);
+        left: 134px;
+        top: 156px;
+        z-index: 2;
+        @include sizing(25px, 55px);
+    }
+
+    .right-hand {
+        background-color: $main-hangman-color;
+        border-radius: 50%;
+        position: absolute;
+        left: 220px;
+        top: 191px;
+        z-index: 1;
+        @include sizing(25px, 25px);
+    }
+
+    .left-hand {
+        background-color: $main-hangman-color;
+        border-radius: 50%;
+        position: absolute;
+        left: 114px;
+        top: 191px;
+        z-index: 1;
+        @include sizing(25px, 25px);
+    }
+
+    .right-leg {
+        background-color: #2c5c8a;
+        position: absolute;
+        left: 195px;
+        top: 224px;
+        transform: rotate(-25deg);
+        z-index: 2;
+        @include sizing(25px, 75px);
+    }
+
+    .left-leg {
+        background-color: #2c5c8a;
+        position: absolute;
+        left: 138px;
+        top: 224px;
+        transform: rotate(25deg);
+        z-index: 2;
+        @include sizing(25px, 75px);
+    }
+
+    .right-foot {
+        background-color: $main-hangman-color;
+        border-radius: 10px;
+        position: absolute;
+        top: 290px;
+        left: 212px;
+        transform: rotate(-25deg);
+        z-index: 1;
+        @include sizing(35px, 15px);
+    }
+
+    .left-foot {
+        background-color: $main-hangman-color;
+        border-radius: 10px;
+        position: absolute;
+        top: 290px;
+        left: 112px;
+        transform: rotate(25deg);
+        z-index: 1;
+        @include sizing(35px, 15px);
+    }
+}
+
+.missed-word-container {
+    overflow-wrap: break-word;
+    padding-left: 15%;
+    text-transform: uppercase;
+    @include sizing(60%, 50%);
+
+    h1 {
+        color: $missed-words-header-color;
+        font-size: $missed-words-header-font-size;
+        margin-bottom: 15px;
+    }
+}
+
+.missed-word {
+    color: $missed-word-color;
+    display: inline-block;
+    font-size: $missed-word-font-size;
+    margin-right: 5px;
+}
+
+.guessed-word-container {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    min-height: 110px;
+    @include flex-y-centered(flex-start);
+    @include sizing(100%, 40px);
+}
+
+.empty-placeholder {
+    background-color: #e6e6e7;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    @include sizing(9%, 70px);
+}
+
+.char-placeholder {
+    background-color: #53555d;
+    color: $white;
+    font-size: $missed-word-font-size;
+    display: inline-block;
+    line-height: $missed-word-font-size * 1.5;
+    border-radius: 5px;
+    margin-right: 5px;
+    text-align: center;
+    z-index: 100;
+    @include sizing(9%, 70px);
+}
+
+.game-over-overlay {
+    padding: 30% 0;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 100;
+    // @include flex-y-centered(justify-content);
+    @include sizing(100vw, 100vh);
+
+    div {
+        color: $white;
+        font-size: $missed-word-font-size;
+        margin: 0 auto;
+        width: 250px;
+        z-index: 102;
+    }
+
+    button {
+        background-color: rgba(255,255,255,0.2);
+        border: 2px dashed #ffba00;
+        border-radius: 15px;
+        color: #ffba00;
+        display: block;
+        font-size: 22px;
+        margin: 20px auto;
+        padding: 15px;
+        text-transform: uppercase;
+        width: 180px;
+        z-index: 102;
+    }
+}

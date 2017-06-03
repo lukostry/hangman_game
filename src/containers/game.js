@@ -1,7 +1,11 @@
 import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import WordContainer from '../components/word-container';
+import Hangman from '../components/hangman';
+import MissedWords from '../components/missed-words';
+import GameOver from '../components/game-over';
+import GuessedWords from '../components/guessed-words';
+import game from './game.css';
 
 class Game extends Component {
 
@@ -31,25 +35,31 @@ class Game extends Component {
     }
 
     render () {
-        const { currentWord, isGameOver } = this.props;
+        const { currentWord, isGameOver, levelOfTheGame, missedWords } = this.props;
 
         return (
-            <div
-                className="app-container"
-            >
-                {isGameOver &&
-                ''}
-                <WordContainer
-                    currentWord={currentWord}
-                />
+            <div className="game-container">
+                {isGameOver && <GameOver />}
+                <div
+                    className="inner-container"
+                    style={{opacity: isGameOver ? '0.2' : '1'}}
+                >
+                    <Hangman levelOfTheGame={levelOfTheGame} />
+                    <MissedWords
+                        missedWords={missedWords}
+                    />
+                    <GuessedWords
+                        currentWord={currentWord}
+                    />
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    // isGameOver - selector
-    // isGameWon - selector
+    isGameOver: state.levelOfTheGame === 11,
+    isGameWon: state.currentWord.every(obj => obj.wasGuessed),
     currentWord: state.currentWord,
     levelOfTheGame: state.levelOfTheGame,
     missedWords: state.missedWords,

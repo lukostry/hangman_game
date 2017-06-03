@@ -1,0 +1,31 @@
+@import "styles/shared.scss";
+
+$triangle-size: 10rem;
+
+.game-container {
+    background-color: $main-background-color;
+    font-family: $font-family;
+    @include flex-y-centered(center);
+    @include sizing(100%, 100vh);
+}
+
+.inner-container {
+    background-color: $white;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 0;
+    position: relative;
+    @include sizing(80%, 75%);
+
+    // &::after {
+    //     border-bottom: $triangle-size solid $triangle-background-color;
+    //     border-left: $triangle-size solid transparent;
+    //     bottom: 0;
+    //     content: "";
+    //     position: absolute;
+    //     right: 0;
+    //     @include sizing(0, 0);
+    // }
+}

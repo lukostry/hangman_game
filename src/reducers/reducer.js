@@ -1,19 +1,19 @@
 const INIT_STATE = {
     currentWord: [],
     levelOfTheGame: 0,
-    missedCharacters: [],
+    missedWords: [],
 };
 
 function updateCurrentWord (word, char) {
     return word.map((obj) => {
         if (obj.character === char) {
             return {
-                ...item,
+                ...obj,
                 wasGuessed: true,
             };
         }
 
-        return item;
+        return obj;
     });
 }
 
@@ -30,7 +30,7 @@ function updateAfterInput (state, char) {
     return {
         ...state,
         levelOfTheGame: state.levelOfTheGame + 1,
-        missedCharacters: [...state.missedCharacters, char],
+        missedWords: [...state.missedWords, char],
     };
 }
 

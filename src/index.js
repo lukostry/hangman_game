@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './components/Root';
-import configureStore from './configureStore';
+import Root from './components/root';
+import configureStore from './configure-store';
 import registerServiceWorker from './registerServiceWorker';
+// import AllerDisplay from './fonts/AllerDisplay.ttf';
 import './index.css';
-import './reset.css';
 
 const store = configureStore();
 
