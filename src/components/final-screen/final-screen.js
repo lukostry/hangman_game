@@ -1,11 +1,14 @@
 import React from 'react';
 import './final-screen.css';
 
-function FinalScreen () {
+function FinalScreen ({
+    isGameOver,
+    onNewWordRequest
+}) {
     return (
         <div className="final-screen-overlay">
-            <div><span>Game over</span></div>
-            <button>New word</button>
+            <div><span>{isGameOver ? 'Game over' : 'You won!'}</span></div>
+            <button onClick={onNewWordRequest}>New word</button>
         </div>
     );
 }
