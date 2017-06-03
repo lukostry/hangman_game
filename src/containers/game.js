@@ -22,11 +22,15 @@ class Game extends Component {
     }
 
     handleKeyStrokes = (e) => {
-        console.log(e);
-        // sanitaze char before passing to func
         const keyPressed = e.key.toUpperCase();
+
+        // Ignore `special` keys like ctrl, shift etc.
+        // Maybe user tries to input capital letter - that should be allowed.
+        if (keyPressed.length > 1) {
+            return;
+        }
+
         this.props.pressCharacter(keyPressed);
-        console.log(keyPressed);
     }
 
     handleNewWordRequest = () => {
