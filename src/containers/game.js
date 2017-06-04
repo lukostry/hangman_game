@@ -66,6 +66,7 @@ class Game extends Component {
                         wasMissed={wasMissed}
                     />
                     <GuessedChars currentWord={currentWord} />
+                    <div className="triangle" />
                 </div>
             </div>
         );

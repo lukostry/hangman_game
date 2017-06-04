@@ -1,9 +1,10 @@
 @import "styles/shared.scss";
 
-$triangle-size: 10rem;
+$bottom-right-border-radius: 10px;
+$triangle-size: 290px;
 
 .game-container {
-    background-color: $main-background-color;
+    background-color: $main-bg;
     font-family: $font-family;
     @include flex-y-centered(center);
     @include sizing(100%, 100vh);
@@ -11,7 +12,7 @@ $triangle-size: 10rem;
 
 .inner-container {
     background-color: $white;
-    border-radius: 10px;
+    border-radius: $bottom-right-border-radius;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -19,14 +20,19 @@ $triangle-size: 10rem;
     padding: 50px 0;
     position: relative;
     @include sizing(80%, 75%);
+}
 
-    // &::after {
-    //     border-bottom: $triangle-size solid $triangle-background-color;
-    //     border-left: $triangle-size solid transparent;
-    //     bottom: 0;
-    //     content: "";
-    //     position: absolute;
-    //     right: 0;
-    //     @include sizing(0, 0);
-    // }
+.triangle {
+    background-color: $triangle-bg;
+    border-radius: 0 0 $bottom-right-border-radius 0;
+    @include position(absolute, $right: 0, $bottom: 0);
+    @include sizing($triangle-size, $triangle-size);
+
+    &::before {
+        content: "";
+        border-top: $triangle-size solid $white;
+        border-right: $triangle-size solid transparent;
+        @include position(absolute, $top: 0, $left: 0);
+        @include sizing(0, 0);
+    }
 }

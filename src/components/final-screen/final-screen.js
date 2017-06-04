@@ -7,8 +7,10 @@ function FinalScreen ({
 }) {
     return (
         <div className="final-screen-overlay">
-            <div><span>{isGameOver ? 'Game over' : 'You won!'}</span></div>
-            <button onClick={onNewWordRequest}>New word</button>
+            <div className="final-message">                
+                <div><span>{isGameOver ? 'Game over' : 'You won!'}</span></div>
+                <button onClick={onNewWordRequest}>New word</button>
+            </div>
         </div>
     );
 }

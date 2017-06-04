@@ -7,15 +7,15 @@
     @include sizing(60%, 50%);
 
     h1 {
-        color: $missed-words-header-color;
-        font-size: $missed-words-header-font-size;
+        color: $missed-chars-header-color;
+        font-size: $missed-chars-header-font-size;
         margin-bottom: 15px;
     }
 }
 
 .missed-char {
-    color: $missed-word-color;
+    color: $missed-char-color;
     display: inline-block;
-    font-size: $missed-word-font-size;
+    font-size: $base-font-size;
     margin-right: 5px;
 }
