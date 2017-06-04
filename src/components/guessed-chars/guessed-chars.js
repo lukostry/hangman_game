@@ -8,10 +8,22 @@ function GuessedChars ({ currentWord }) {
     return (
         <section className="guessed-chars-container">
             {placeholders.map((item, index) => {
-                return <div className="empty-placeholder" key={index}></div>
+                return (
+                    <div
+                        className="empty-placeholder"
+                        key={index}
+                    />
+                );
             })}
-            {currentWord.map((obj, index) => {
-                return <div className="char-placeholder" key={index}>{obj.wasGuessed && obj.character}</div>
+            {currentWord.map((obj) => {
+                return (
+                    <div
+                        className="char-placeholder"
+                        key={obj.id}
+                    >
+                        {obj.wasGuessed && obj.character}
+                    </div>
+                )
             })}
         </section>
     );
