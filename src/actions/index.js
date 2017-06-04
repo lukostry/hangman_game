@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { v4 } from 'uuid';
 
-const BASE_URL = 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=10&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+const API_CONFIG = {
+    headers: { 'X-Mashape-Key': 'u5gGqvyur4mshRDxulUaySLKfIYhp1jF4objsnJefU3WAntnmX' },
+};
+
+const WORD_URL = 'https://wordsapiv1.p.mashape.com/words/?lettersMax=10&random=true';
 
 export const fetchNewWord = () => dispatch =>
-    axios.get(BASE_URL)
+    axios.get(WORD_URL, API_CONFIG)
         .then((response) => {
             const wordConvertedToArr = response.data.word.toUpperCase().split('');
 
