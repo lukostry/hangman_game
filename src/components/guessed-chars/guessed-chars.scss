@@ -10,7 +10,7 @@
 
 .guessed-chars-container {
     min-height: 110px;
-    padding: 0 0 0 40px;
+    padding: 0 40px;
     @include position(absolute, $bottom: 0, $left: 0);
     @include flex-y-centered(flex-start);
     @include sizing(100%, 40px);
@@ -20,7 +20,7 @@
     background-color: $empty-placeholder-bg;
     z-index: $base-z-index;
     @include placeholder-abstract;
-    @include sizing(9%, 70px);
+    @include sizing(10%, 70px);
 }
 
 .char-placeholder {
@@ -31,5 +31,5 @@
     text-align: center;
     z-index: $base-z-index;
     @include placeholder-abstract;
-    @include sizing(9%, 70px);
+    @include sizing(10%, 70px);
 }
