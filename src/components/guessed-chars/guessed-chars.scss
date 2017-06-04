@@ -10,7 +10,8 @@
 
 .guessed-chars-container {
     min-height: 110px;
-    @include position(absolute, $bottom: 40px, $left: 40px);
+    padding: 0 0 0 40px;
+    @include position(absolute, $bottom: 40px, $left: 0);
     @include flex-y-centered(flex-start);
     @include sizing(100%, 40px);
 }

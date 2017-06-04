@@ -5,6 +5,29 @@ $legs-rotation-radius: 25deg;
 
 $base-border-radius: 10px;
 
+// dimensions
+
+$bar-main-h: 20px;
+$bar-attachment-h: 40px;
+
+$head-h: 70px;
+$neck-h: 15px;
+
+$corpus-main-h: 60px;
+$corpus-main-w: 55px;
+$corpus-attachment-h: 25px;
+
+$arm-w: 25px;
+$arm-h: 55px;
+
+$hand-d: 25px;
+
+$leg-w: 25px;
+$leg-h: 75px;
+
+$foot-h: 15px;
+$foot-w: 35px;
+
 .hangman {
     position: relative;
     @include sizing(40%, 50%);
@@ -12,27 +35,28 @@ $base-border-radius: 10px;
     .bar {
         background-color: $hangman-gray;
         border-radius: 0 5px 5px 0;
-        @include sizing(60%, 30px);
+        min-width: 200px;
+        @include sizing(60%, $bar-main-h);
 
         &::after {
             content: "";
             background-color: $hangman-gray;
-            @include position(absolute, $top: 30px, $left: 165px);
-            @include sizing(25px, 40px);
+            @include position(absolute, $top: $bar-main-h, $left: 170px);
+            @include sizing(18px, $bar-attachment-h);
         }
     }
 
     .head {
         background-image: url(./head.png);
-        @include position(absolute, $top: 70px, $left: 144px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h, $left: 144px);
         @include background-image-centerer;
-        @include sizing(70px, 70px);
+        @include sizing(70px, $head-h);
     }
 
     .neck {
         background-color: $main-hangman-color;
-        @include position(absolute, $top: 140px, $left: 167px);
-        @include sizing(25px, 15px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h, $left: 167px);
+        @include sizing(25px, $neck-h);
     }
 
     .corpus {
@@ -41,84 +65,84 @@ $base-border-radius: 10px;
             background-color: $left-arm-bg;
             border-radius: $base-border-radius 0 0 0;
             content: "";
-            @include position(absolute, $top: 155px, $left: 152px);
-            @include sizing(27.5px, 60px);
+            @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h, $left: 152px);
+            @include sizing($corpus-main-w /2, $corpus-main-h);
         }
 
         &::after {
             background-color: $right-arm-bg;
             border-radius: 0 $base-border-radius 0 0;
             content: "";
-            @include position(absolute, $top: 155px, $left: 179.5px);
-            @include sizing(27.5px, 60px);
+            @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h, $left: 179.5px);
+            @include sizing($corpus-main-w /2, $corpus-main-h);
         }
     }
 
     .corpus-attachment {
         background-color: $legs-bg;
-        @include position(absolute, $top: 215px, $left: 152px);
-        @include sizing(55px, 25px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + $corpus-main-h, $left: 152px);
+        @include sizing($corpus-main-w, $corpus-attachment-h);
     }
 
     .right-arm {
         background-color: $right-arm-bg;
         transform: rotate(-$arms-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 157px, $left: 199px);
-        @include sizing(25px, 55px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + 2px, $left: 199px);
+        @include sizing($arm-w, $arm-h);
     }
 
     .left-arm {
         background-color: $left-arm-bg;
         transform: rotate($arms-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 157px, $left: 134px);
-        @include sizing(25px, 55px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + 2px, $left: 134px);
+        @include sizing($arm-w, $arm-h);
     }
 
     .right-hand {
         background-color: $main-hangman-color;
         border-radius: 50%;
-        @include position(absolute, $top: 193px, $left: 220px);
-        @include sizing(25px, 25px);
+        @include position(absolute, $top: 183px, $left: 220px);
+        @include sizing($hand-d, $hand-d);
     }
 
     .left-hand {
         background-color: $main-hangman-color;
         border-radius: 50%;
-        @include position(absolute, $top: 191px, $left: 114px);
-        @include sizing(25px, 25px);
+        @include position(absolute, $top: 183px, $left: 114px);
+        @include sizing($hand-d, $hand-d);
     }
 
     .right-leg {
         background-color: $legs-bg;
         transform: rotate(-$legs-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 224px, $left: 195px);
-        @include sizing(25px, 75px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + $corpus-main-h + ($corpus-attachment-h / 2), $left: 195px);
+        @include sizing($leg-w, $leg-h);
     }
 
     .left-leg {
         background-color: $legs-bg;
         transform: rotate($legs-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 224px, $left: 138px);
-        @include sizing(25px, 75px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + $corpus-main-h + ($corpus-attachment-h / 2), $left: 138px);
+        @include sizing($leg-w, $leg-h);
     }
 
     .right-foot {
         background-color: $main-hangman-color;
         border-radius: $base-border-radius;
         transform: rotate(-$legs-rotation-radius);
-        @include position(absolute, $top: 290px, $left: 212px);
-        @include sizing(35px, 15px);
+        @include position(absolute, $top: 283px, $left: 212px);
+        @include sizing($foot-w, $foot-h);
     }
 
     .left-foot {
         background-color: $main-hangman-color;
         border-radius: $base-border-radius;
         transform: rotate($legs-rotation-radius);
-        @include position(absolute, $top: 290px, $left: 112px);
-        @include sizing(35px, 15px);
+        @include position(absolute, $top: 283px, $left: 112px);
+        @include sizing($foot-w, $foot-h);
     }
 }
