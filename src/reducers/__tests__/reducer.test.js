@@ -46,5 +46,8 @@ describe('Root app reducer', () => {
         };
 
         expect(reducer(INIT_STATE, charPressedAction).missedChars).toHaveLength(1);
+        expect(reducer(INIT_STATE, charPressedAction).missedChars)
+            .toContain(charPressedAction.payload);
+        expect(reducer(INIT_STATE, charPressedAction).levelOfTheGame).toBe(1);
     });
 });
