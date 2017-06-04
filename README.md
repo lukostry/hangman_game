@@ -15,3 +15,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Deployed version
 
  [https://lukostry.github.io/hangman_game/](https://lukostry.github.io/hangman_game/)
+
+ How to play? Just use your keyboard to select a character and start guessing!
