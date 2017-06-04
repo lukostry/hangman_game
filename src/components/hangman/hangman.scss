@@ -88,7 +88,7 @@ $foot-w: 35px;
         background-color: $right-arm-bg;
         transform: rotate(-$arms-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + 2px, $left: 199px);
+        @include position(absolute, $top: $bar-main-h + $bar-attachment-h + $head-h + $neck-h + 2px, $left: 201px);
         @include sizing($arm-w, $arm-h);
     }
 

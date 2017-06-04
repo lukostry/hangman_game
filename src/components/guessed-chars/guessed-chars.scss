@@ -18,6 +18,7 @@
 
 .empty-placeholder {
     background-color: $empty-placeholder-bg;
+    z-index: $base-z-index;
     @include placeholder-abstract;
     @include sizing(9%, 70px);
 }
