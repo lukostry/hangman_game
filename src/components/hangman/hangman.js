@@ -8,6 +8,7 @@ function Hangman ({ levelOfTheGame }) {
             {levelOfTheGame > 0 && <div className="head" />}
             {levelOfTheGame > 1 && <div className="neck" />}
             {levelOfTheGame > 2 && <div className="corpus" />}
+            {levelOfTheGame > 2 && <div className="corpus-attachment" />}
             {levelOfTheGame > 3 && <div className="right-arm" />}
             {levelOfTheGame > 4 && <div className="left-arm" />}
             {levelOfTheGame > 5 && <div className="right-hand" />}

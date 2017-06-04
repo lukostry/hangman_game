@@ -11,3 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - clone repo
 - install dependencies: `npm install` or `yarn-install`
 - `npm start` or `yarn start` will run the app, open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Deployed version
+
+ [https://lukostry.github.io/hangman_game/](https://lukostry.github.io/hangman_game/)

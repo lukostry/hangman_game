@@ -1,9 +1,9 @@
 @import "styles/shared.scss";
 
-$foot-border-radius: 10px;
-
 $arms-rotation-radius: 45deg;
 $legs-rotation-radius: 25deg;
+
+$base-border-radius: 10px;
 
 .hangman {
     position: relative;
@@ -36,17 +36,35 @@ $legs-rotation-radius: 25deg;
     }
 
     .corpus {
-        background-image: url(./corpus.png);
-        @include position(absolute, $top: 155px, $left: 152px);
-        @include background-image-centerer;
-        @include sizing(55px, 85px);
+
+        &::before {
+            background-color: $left-arm-bg;
+            border-radius: $base-border-radius 0 0 0;
+            content: "";
+            @include position(absolute, $top: 155px, $left: 152px);
+            @include sizing(27.5px, 60px);
+        }
+
+        &::after {
+            background-color: $right-arm-bg;
+            border-radius: 0 $base-border-radius 0 0;
+            content: "";
+            @include position(absolute, $top: 155px, $left: 179.5px);
+            @include sizing(27.5px, 60px);
+        }
+    }
+
+    .corpus-attachment {
+        background-color: $legs-bg;
+        @include position(absolute, $top: 215px, $left: 152px);
+        @include sizing(55px, 25px);
     }
 
     .right-arm {
         background-color: $right-arm-bg;
         transform: rotate(-$arms-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 156px, $left: 200px);
+        @include position(absolute, $top: 157px, $left: 199px);
         @include sizing(25px, 55px);
     }
 
@@ -54,14 +72,14 @@ $legs-rotation-radius: 25deg;
         background-color: $left-arm-bg;
         transform: rotate($arms-rotation-radius);
         z-index: $base-z-index;
-        @include position(absolute, $top: 156px, $left: 134px);
+        @include position(absolute, $top: 157px, $left: 134px);
         @include sizing(25px, 55px);
     }
 
     .right-hand {
         background-color: $main-hangman-color;
         border-radius: 50%;
-        @include position(absolute, $top: 191px, $left: 220px);
+        @include position(absolute, $top: 193px, $left: 220px);
         @include sizing(25px, 25px);
     }
 
@@ -90,7 +108,7 @@ $legs-rotation-radius: 25deg;
 
     .right-foot {
         background-color: $main-hangman-color;
-        border-radius: $foot-border-radius;
+        border-radius: $base-border-radius;
         transform: rotate(-$legs-rotation-radius);
         @include position(absolute, $top: 290px, $left: 212px);
         @include sizing(35px, 15px);
@@ -98,7 +116,7 @@ $legs-rotation-radius: 25deg;
 
     .left-foot {
         background-color: $main-hangman-color;
-        border-radius: $foot-border-radius;
+        border-radius: $base-border-radius;
         transform: rotate($legs-rotation-radius);
         @include position(absolute, $top: 290px, $left: 112px);
         @include sizing(35px, 15px);
