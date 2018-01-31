@@ -7,7 +7,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Sass(SCSS)
 - Jest
 
-
 ## How to run project?
 
 - clone repo
