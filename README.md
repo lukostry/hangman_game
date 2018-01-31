@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - React
 - Redux
 - Sass(SCSS)
+- Jest
+
 
 ## How to run project?
 
